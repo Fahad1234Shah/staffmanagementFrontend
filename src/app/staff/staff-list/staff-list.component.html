@@ -1,16 +1,23 @@
-<h2>Employee List</h2>
+<div class="container py-5">
+
+  <button type="button" class="btn btn-outline-primary" routerLink="/staff-profile">Add New Employee</button>
+  <br>
+
+<div class="div">
+  <h2>Employee List</h2>
 
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
     aria-expanded="false">
-    Dropdown button
+    Office/Location
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li *ngFor="let employee of employees">
+      <option>{{employee.officelocation}}</option>
+    </li>
   </ul>
 </div>
+
 
 <table border="1">
   <thead>
@@ -38,3 +45,6 @@
     </tr>
   </tbody>
 </table>
+
+</div>
+</div>

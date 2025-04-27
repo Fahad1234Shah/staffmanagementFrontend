@@ -1,171 +1,103 @@
-
 <div class="container py-5">
+
+  <!-- Buttons -->
+  <div class="d-flex flex-column align-items-end" style="position: absolute; top: 20px; right: 20px;">
+    <button class="btn btn-primary mb-2" (click)="refreshForm()">Refresh</button>
+    <button class="btn btn-success mb-2" (click)="saveEmployee()">Save</button>
+    <button class="btn btn-danger" routerLink="/">List</button>
+  </div>
 
   <form>
     <div class="container py-5">
-  
       <h2 class="mb-4">Employee Profile</h2>
+
       <div class="row mb-3">
+
+        <!-- Office Location -->
         <div class="col-12 mb-3">
-          <input type="text" class="form-control" placeholder="Office/Location" [(ngModel)]="employeeData.officeLocation" name="officeLocation">
+          <input type="text" class="form-control" placeholder="Office Location" [(ngModel)]="employeeData.officelocation" name="officelocation">
         </div>
+
+        <!-- Employee Id -->
+        <!-- <div class="col-md-6 mb-3">
+          <input type="number" class="form-control" placeholder="Employee Id" [(ngModel)]="employeeData.staffId" name="staffId">
+        </div> -->
+
+        <!-- First Name -->
         <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Employee Id" [(ngModel)]="employeeData.staffId" name="staffId">
+          <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="employeeData.firstname" name="firstname">
         </div>
-        <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Father Name" [(ngModel)]="employeeData.fatherName" name="fatherName">
-        </div>
+
+        <!-- Second Name -->
         <div class="col-12 mb-3">
-          <input type="text" class="form-control" placeholder="Full Name" [(ngModel)]="employeeData.fullName" name="fullName">
+          <input type="text" class="form-control" placeholder="Second Name" [(ngModel)]="employeeData.secondname" name="secondname">
         </div>
+
+        <!-- Email -->
+        <div class="col-12 mb-3">
+          <input type="email" class="form-control" placeholder="Email" [(ngModel)]="employeeData.Email" name="Email">
+        </div>
+
+        <!-- Phone Number -->
+        <div class="col-12 mb-3">
+          <input type="text" class="form-control" placeholder="Phone Number" [(ngModel)]="employeeData.PhoneNumber" name="PhoneNumber">
+        </div>
+
+        <!-- Address -->
+        <div class="col-12 mb-3">
+          <input type="text" class="form-control" placeholder="Address" [(ngModel)]="employeeData.address" name="address">
+        </div>
+
+        <!-- Gender -->
+        <div class="col-md-6 mb-3">
+          <select class="form-select" [(ngModel)]="employeeData.Gender" name="Gender">
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="col-md-6 mb-3">
+          <input type="date" class="form-control" [(ngModel)]="employeeData.DOB" name="DOB">
+        </div>
+
+        <!-- Hire Date -->
+        <div class="col-md-6 mb-3">
+          <input type="date" class="form-control" [(ngModel)]="employeeData.hireDate" name="hireDate">
+        </div>
+
+        <!-- Department -->
+        <div class="col-md-6 mb-3">
+          <input type="number" class="form-control" placeholder="Department Id" [(ngModel)]="employeeData.DepartmentId" name="DepartmentId">
+        </div>
+
+        <!-- Resume -->
+        <div class="col-12 mb-3">
+          <input type="text" class="form-control" placeholder="Resume (URL or Text)" [(ngModel)]="employeeData.resume" name="resume">
+        </div>
+
+        <!-- Salary -->
+        <div class="col-12 mb-3">
+          <input type="number" class="form-control" placeholder="Salary" [(ngModel)]="employeeData.salary" name="salary">
+        </div>
+
+        <!-- Martial Status -->
+        <div class="col-12 mb-3">
+          <select class="form-select" [(ngModel)]="employeeData.martialstatus" name="martialstatus">
+            <option value="" disabled selected>Select Marital Status</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+          </select>
+        </div>
+
+        <!-- Notes -->
+        <div class="col-12 mb-3">
+          <textarea class="form-control" rows="4" placeholder="Notes" [(ngModel)]="employeeData.Notes" name="Notes"></textarea>
+        </div>
+
       </div>
-  
     </div>
   </form>
-  
-
-  <!-- Section 1 -->
-  <h2 class="mb-4">Employee Profile</h2>
-  <div class="row mb-3" >
-    <div class="col-12 mb-3">
-      <input type="text" class="form-control" placeholder="Office/Location">
-    </div>
-    <div class="col-md-6 mb-3">
-      <input type="text" class="form-control" placeholder="Employee id">
-    </div>
-    <div class="col-md-6 mb-3">
-      <input type="text" class="form-control" placeholder="Father/Hus.Name">
-    </div>
-    <div class="col-12 mb-3">
-      <input type="text" class="form-control" placeholder="Full Name">
-    </div>
-    <div class="col-12 mb-3">
-      <input type="text" class="form-control" placeholder="Sur Name">
-    </div>
-  </div>
-
-  <!-- Section 2 -->
-  <h2 class="mb-4">Nationality & IDS</h2>
-  <div class="row mb-3">
-    <div class="col-md-6 mb-3">
-      <select class="form-select">
-        <option selected>Nationality</option>
-      </select>
-    </div>
-    <div class="col-md-6 mb-3">
-      <input type="date" class="form-control">
-    </div>
-    <div class="col-md-6 mb-3">
-      <input type="number" class="form-control" placeholder="ID No">
-    </div>
-    <div class="col-md-6 mb-3">
-      <input type="date" class="form-control">
-    </div>
-  </div>
-
-  <!-- Section 3 -->
-  <h2 class="mb-4">Basic Information</h2>
-  <div class="row mb-3">
-    <div class="col-md-4 mb-3">
-      <select class="form-select">
-        <option selected>Section</option>
-      </select>
-    </div>
-    <div class="col-md-4 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-    <div class="col-md-4 mb-3">
-      <input type="text" class="form-control" placeholder="Input Field">
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <input type="text" class="form-control" placeholder="Input Field">
-    </div>
-    <div class="col-md-6 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-
-    <div class="col-md-4 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-    <div class="col-md-4 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-    <div class="col-md-4 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-
-    <div class="col-md-4 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-    <div class="col-md-4 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-    <div class="col-md-2 mb-3 d-flex align-items-center">
-      <div class="form-check me-3">
-        <input class="form-check-input" type="checkbox" id="checkbox1">
-        <label class="form-check-label" for="checkbox1">
-          Check box
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="checkbox2">
-        <label class="form-check-label" for="checkbox2">
-          Check box
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <!-- Section 4 -->
-  <h2 class="mb-4">Employee Profile</h2>
-  <div class="row mb-3">
-    <div class="col-md-6 mb-3">
-      <input type="date" class="form-control">
-    </div>
-    <div class="col-md-6 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-    <div class="col-md-6 mb-3">
-      <input type="date" class="form-control">
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <select class="form-select">
-        <option selected>Dropdown</option>
-      </select>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <input type="date" class="form-control">
-    </div>
-
-    <div class="col-12 mb-3">
-      <textarea class="form-control" rows="4" placeholder="Text Area"></textarea>
-    </div>
-  </div>
 
 </div>
-
