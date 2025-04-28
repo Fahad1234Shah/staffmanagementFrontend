@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -35,4 +35,15 @@ export class EmployeeService {
   deleteEmployee(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiURL}/${id}`);
   }
+
+  
+  searchEmployees(filters: any): Observable<any> {
+    let params = new HttpParams();
+    Object.keys(filters).forEach(key => {
+      params = params.append(key, filters[key]);
+    });
+
+    return this.http.get<any>(`${this.apiURL}/search`, { params });
+  }
+  
 }
