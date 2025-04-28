@@ -7,17 +7,15 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-staff-list',
-  imports: [RouterModule,CommonModule,FormsModule],
+  imports: [RouterModule, CommonModule, FormsModule],
   templateUrl: './staff-list.component.html',
-  styleUrl: './staff-list.component.css'
+  styleUrls: ['./staff-list.component.css']
 })
 export class StaffListComponent {
-
-
   employees: any[] = [];
   totalRecords = 0;
   pageNumber = 1;
-  pageSize = 5;
+  pageSize = 50;
 
   // Filters
   officeLocationFilter: string = '';
@@ -69,6 +67,12 @@ export class StaffListComponent {
     this.employeeService.searchEmployees(filters).subscribe(response => {
       this.employees = response.employees;
       this.totalRecords = response.totalRecords;
+
+      // Map department name to employees
+      this.employees = this.employees.map(employee => {
+        employee.departmentName = this.getDepartmentName(employee.departmentId);
+        return employee;
+      });
     }, error => {
       console.error('Error fetching employees:', error);
       this.employees = [];
@@ -94,19 +98,9 @@ export class StaffListComponent {
       this.fetchEmployees();
     }
   }
+
+  getDepartmentName(departmentId: number): string {
+    const department = this.uniqueDepartments.find(dep => dep.departmentId === departmentId);
+    return department ? department.departmentName : 'Unknown';
+  }
 }
-
-
-
-//staffprofile
-
-// this.employeeId = this.route.snapshot.paramMap.get('id');
-
-// if (this.employeeId) {
-//   // Fetch employee details from backend
-//   this.employeeService.getEmployeeById(this.employeeId).subscribe(data => {
-//     this.employeeData = data;
-//     console.log('Employee loaded:', this.employeeData);
-//   });
-// }
-// }

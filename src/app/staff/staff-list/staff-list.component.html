@@ -21,7 +21,7 @@
       <label>Department:</label>
       <select class="form-select" [(ngModel)]="departmentIdFilter">
         <option value="">All Departments</option>
-        <option *ngFor="let department of uniqueDepartments" [value]="department.id">{{ department.name }}</option>
+        <option *ngFor="let department of uniqueDepartments" [value]="department.departmentName">{{ department.name }}</option>
       </select>
     </div>
 
